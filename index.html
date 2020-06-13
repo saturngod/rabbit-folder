@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <script src="rabbit.js"></script>
+  </head>
+  <body>
+    <h1>Please Select the Source Folder</h1>
+    <label id="sourcePath"></label>
+    <br/>
+    <input id="folder" type="button" value="Select Folder" onclick="openFolder()" />
+    <br/>
+    
+    <h1>Please Select the Target Folder</h1>
+    <label id="targetPath"></label>
+    <br/>
+    <input id="folder" type="button" value="Select Folder" onclick="openTargetFolder()" />
+    <p></p>
+
+    <input type="button" value="Convert" onclick="convertNow()">
+
+    <script src="app.js"></script>
+  </body>
+</html>

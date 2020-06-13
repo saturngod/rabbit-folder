@@ -1,0 +1,22 @@
+{
+  "name": "rabbit-electron",
+  "version": "0.1.0",
+  "main": "main.js",
+  "description": "Rabbit Zawgyi to Unicode by Folder",
+  "author": "saturngod",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^9.0.4",
+    "electron-builder": "^22.7.0"
+  },
+  "build": {
+    "appId": "com.comquas.rabbitFolder",
+    "mac": {
+      "category": "public.app-category.utilities"
+    }
+  }
+}
