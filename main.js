@@ -7,8 +7,8 @@ let mainWindow;
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 680,
+    height: 380,
     webPreferences: {
       nableRemoteModule: true,
       nodeIntegration: true
@@ -29,9 +29,9 @@ app.whenReady().then(createWindow)
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
+  //if (process.platform !== 'darwin') {
     app.quit()
-  }
+  //}
 })
 
 app.on('activate', () => {
