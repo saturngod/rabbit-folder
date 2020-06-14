@@ -1,6 +1,6 @@
 {
   "name": "rabbit-electron",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "main.js",
   "description": "Rabbit Zawgyi to Unicode by Folder",
   "author": "saturngod",
@@ -18,5 +18,8 @@
     "mac": {
       "category": "public.app-category.utilities"
     }
+  },
+  "dependencies": {
+    "istextorbinary": "^5.2.0"
   }
 }

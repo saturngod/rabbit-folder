@@ -44,6 +44,7 @@ async function convertNow() {
         const fs = require("fs");
         const { readdir } = require("fs").promises;
         const path = require("path");
+        const { isText, isBinary, getEncoding } = require('istextorbinary')
         async function getFiles(dir) {
             const dirents = await readdir(dir, { withFileTypes: true });
             const files = await Promise.all(
@@ -61,10 +62,9 @@ async function convertNow() {
                     } else {
                         var myfile = path.basename(res);
                         let extension = path.extname(res);
-                        let notconvert = [".png", ".jpg", ".docx", ".xlsx", ".doc", ".pdf", ".mp3", ".mp4",".mov"];
                         if (myfile != ".DS_Store") {
                             //read file
-                            if (notconvert.includes(extension)) {
+                            if (!isText(res)) {
                                 //copy file
                                 let realPath = targetPath + full;
                                 fs.copyFileSync(res, realPath);
