@@ -31,6 +31,83 @@ function openFolderAll(label, source) {
     });
 }
 
+function convertDocx(source, dest,docx) {
+    const fs = require("fs");
+    var zipper = require('zip-local');
+
+    if (!fs.existsSync(dest)){
+        fs.mkdirSync(dest);
+    }
+
+    zipper.sync.unzip(source).save(dest);
+
+    var docXMLPath = dest + "/word/document.xml";
+    docXML = fs.readFileSync(docXMLPath).toString();
+    docXML = docXML.replace(/=\"Zawgyi-One\"/g, "=\"Myanmar Text\"")
+    let content = Rabbit.zg2uni(docXML);
+    fs.writeFileSync(docXMLPath, content, 'utf8');
+    zipper.sync.zip(dest).compress().save(docx);
+    fs.rmdirSync(dest,{ recursive: true });
+}
+
+function convertXlsx(source, dest,xlsx) {
+    const fs = require("fs");
+    var zipper = require('zip-local');
+
+    if (!fs.existsSync(dest)){
+        fs.mkdirSync(dest);
+    }
+
+    zipper.sync.unzip(source).save(dest);
+
+    var docXMLPath = dest + "/xl/sharedStrings.xml";
+    docXML = fs.readFileSync(docXMLPath).toString();
+    let content = Rabbit.zg2uni(docXML);
+    
+    fs.writeFileSync(docXMLPath, content, 'utf8');
+
+    var stylePath = dest + "/xl/styles.xml";
+    docXML = fs.readFileSync(stylePath).toString();
+    content = docXML.replace(/val\=\"Zawgyi-One\"/g, "val\=\"Myanmar Text\"")
+    fs.writeFileSync(stylePath, content, 'utf8');
+
+    zipper.sync.zip(dest).compress().save(xlsx);
+    fs.rmdirSync(dest,{ recursive: true });
+}
+
+function convertPptx(source, dest,xlsx) {
+    const fs = require("fs");
+    var zipper = require('zip-local');
+    const path = require("path");
+    
+    
+
+    if (!fs.existsSync(dest)){
+        fs.mkdirSync(dest);
+    }
+
+    zipper.sync.unzip(source).save(dest);
+
+    slides = dest + "/ppt/slides";
+
+    let filenames = fs.readdirSync(slides);
+
+    filenames.forEach(file => { 
+        var fullSlides = slides + "/" + file;
+
+        let extension = path.extname(fullSlides);
+        if (extension == ".xml") {
+            docXML = fs.readFileSync(fullSlides).toString();
+            let content = Rabbit.zg2uni(docXML);
+            content = content.replace(/\stypeface\=\"Zawgyi-One\"\s/g, " typeface=\"Myanmar Text\" ")
+            fs.writeFileSync(fullSlides, content, 'utf8');
+        }
+    }); 
+    
+    zipper.sync.zip(dest).compress().save(xlsx);
+    fs.rmdirSync(dest,{ recursive: true });
+}
+
 async function convertNow() {
     if (sourcePath == "") {
         alert("Please select source path");
@@ -62,7 +139,23 @@ async function convertNow() {
                     } else {
                         var myfile = path.basename(res);
                         let extension = path.extname(res);
-                        if (myfile != ".DS_Store") {
+
+                        if (extension == ".docx") {
+                            let realPath = targetPath + full;
+                            let folder = realPath.substring(0, realPath.length-5);
+                            convertDocx(res, folder, realPath);
+                        }
+                        else if (extension == ".xlsx") {
+                            let realPath = targetPath + full;
+                            let folder = realPath.substring(0, realPath.length-5);
+                            convertXlsx(res, folder, realPath);
+                        }
+                        else if (extension == ".pptx") {
+                            let realPath = targetPath + full;
+                            let folder = realPath.substring(0, realPath.length-5);
+                            convertPptx(res, folder, realPath);
+                        }
+                        else if (myfile != ".DS_Store") {
                             //read file
                             if (!isText(res)) {
                                 //copy file

@@ -20,6 +20,7 @@
     }
   },
   "dependencies": {
-    "istextorbinary": "^5.2.0"
+    "istextorbinary": "^5.2.0",
+    "zip-local": "^0.3.4"
   }
 }
