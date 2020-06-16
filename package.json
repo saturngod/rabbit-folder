@@ -1,8 +1,8 @@
 {
   "name": "rabbit-electron",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "main.js",
-  "description": "Rabbit Zawgyi to Unicode by Folder",
+  "description": "Rabbit Zawgyi to Unicode by Folder. Supporting text file and docx , xlsx, pptx.",
   "author": "saturngod",
   "scripts": {
     "start": "electron .",
