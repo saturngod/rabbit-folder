@@ -11,6 +11,13 @@ function openTargetFolder() {
     openFolderAll(targetPath, false);
 }
 
+function openWeb(e) {
+    console.log(e);
+    const shell = require('electron').shell;
+    shell.openExternal("https://www.comquas.com");
+}
+
+  
 function openFolderAll(label, source) {
     const electron = require("electron").remote;
     const dialog = electron.dialog;

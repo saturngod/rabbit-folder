@@ -7,7 +7,7 @@ function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 680,
-    height: 420,
+    height: 450,
     webPreferences: {
       nableRemoteModule: true,
       nodeIntegration: true
