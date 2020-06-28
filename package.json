@@ -3,12 +3,24 @@
   "version": "0.3.0",
   "main": "main.js",
   "description": "Rabbit Zawgyi to Unicode by Folder. Supporting text file and docx , xlsx, pptx.",
+  "main": "main.js",
   "author": "saturngod",
+  "license": "MIT",
   "scripts": {
     "start": "electron .",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "snap": "electron-builder --linux snap"
   },
+  "repository": "https://github.com/saturngod/rabbit-folder",
+    "keywords": [
+    "Electron",
+    "Rabbit",
+    "Zawgyi",
+    "Unicode",
+    "Burmese",
+    "Converter"
+  ],
   "devDependencies": {
     "electron": "^9.0.4",
     "electron-builder": "^22.7.0"
