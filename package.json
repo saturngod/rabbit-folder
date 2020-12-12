@@ -3,7 +3,6 @@
   "version": "0.3.0",
   "main": "main.js",
   "description": "Rabbit Zawgyi to Unicode by Folder. Supporting text file and docx , xlsx, pptx.",
-  "main": "main.js",
   "author": "saturngod",
   "license": "MIT",
   "scripts": {
