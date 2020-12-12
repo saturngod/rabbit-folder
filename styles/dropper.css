@@ -1,0 +1,46 @@
+.dropper {
+    cursor: pointer;
+    
+    user-select: none;
+
+    height: 250px;
+
+    border: 1px dashed #4F4F4F;
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 16px;
+}
+
+.dropper img {
+    width: 64px;
+    height: 64px;
+
+    margin-bottom: 8px;
+}
+
+.dropper span {
+    margin-bottom: 8px;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #828282;
+}
+
+.dropper .text-hint:last-child {
+    margin-top: 32px;
+}
+
+.dropper span.text-choose {
+    font-size: 16px;
+    font-weight: 500;
+    color: #4F4F4F;
+}

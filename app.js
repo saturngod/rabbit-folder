@@ -1,6 +1,29 @@
 var sourcePath = "";
 var targetPath = "";
 
+// document.getElementById("folder1").addEventListener('drop', (event) => { 
+//     event.preventDefault(); 
+//     event.stopPropagation(); 
+  
+//     for (const f of event.dataTransfer.files) { 
+//         // Using the path attribute to get absolute file path 
+//         console.log('File Path of dragged files: ', f.path) 
+//       } 
+// }); 
+  
+// document.getElementById("folder1").addEventListener('dragover', (e) => { 
+//     e.preventDefault(); 
+//     e.stopPropagation(); 
+//   }); 
+  
+//   document.getElementById("folder1").addEventListener('dragenter', (event) => { 
+//     console.log('File is in the Drop Space'); 
+// }); 
+  
+// document.getElementById("folder1").addEventListener('dragleave', (event) => { 
+//     console.log('File has left the Drop Space'); 
+// }); 
+
 function openFolder() {
     var sourcePath = document.getElementById("sourcePath");
     openFolderAll(sourcePath, true);

@@ -12,7 +12,7 @@
     "snap": "electron-builder --linux snap"
   },
   "repository": "https://github.com/saturngod/rabbit-folder",
-    "keywords": [
+  "keywords": [
     "Electron",
     "Rabbit",
     "Zawgyi",

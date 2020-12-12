@@ -1,0 +1,19 @@
+.sponsor {
+    position: absolute;
+    bottom: 12px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    align-self: center;
+}
+
+.sponsor img {
+    width: 100px;
+}
+
+.sponsor span {
+    font-size: 10px;
+}

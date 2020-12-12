@@ -1,65 +1,38 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <title>Hello Rabbit 🐇</title>
-    <!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag -->
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
     <script src="rabbit.js"></script>
+
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
-    <style>
-      .title {
-        font-size: 2em;
-      }
-      
-      footer {
-        text-align: center;
-      }
-      footer small {
-        display: block;
-      }
-
-      .desc {
-        color: #888;
-        font-weight: lighter;
-      }
-
-      .logo {
-        cursor: pointer;
-      }
-    </style>
+    <link rel="stylesheet" href="styles/wrapper.css">
+    <link rel="stylesheet" href="styles/dropper.css">
+    <link rel="stylesheet" href="styles/controls.css">
+    <link rel="stylesheet" href="styles/sponsor.css">
 </head>
-
 <body>
-    <div class="container">
-       
-        <form>
-            <div class="form-group">
-                <label class="title form-text">Please Select the Source Folder</label>
-                <input class="btn btn-secondary" id="folder" type="button" value="Select Folder" onclick="openFolder()" />
-                <small id="sourcePath"></small>
-            </div>
-
-            <div class="form-group">
-                <label class="title form-text">Please Select the Target Folder</label>
-                <input class="btn btn-secondary" id="folder" type="button" value="Select Folder" onclick="openTargetFolder()" />
-                <small id="targetPath"></small>
-            </div>
-
-
-            <div class="form-group">
-                <input type="button" class="btn btn-primary" value="Convert" onclick="convertNow()">
-        </form>
-        </form>
+    <div class="wrapper">
+        <div class="dropper">
+            <img src="images/folder.png" alt="folder">
+            <span class="text-choose">Choose source folder</span>
+            <span class="text-choose hidden">Path to source folder</span>
+            <span class="text-hint">Click or drag a folder here</span>
+            <span class="text-hint">Rabbit Electron supports text files, docx, xlsx, pptx files</span>
         </div>
-        <div class="desc">
-          <p>Rabbit Electron is supporting text files, docx, xlsx, pptx file</p>
+        <div class="controls">
+            <button class="btn btn-light btn-sm">Choose target folder</button>
+            <div>
+                <button class="btn btn-primary btn-sm">Convert</button>
+                <span class="text-danger">error text</span>
+            </div>
         </div>
-        <script src="app.js"></script>
-        <footer>
-          <small>Sponsored By</small>
-          <img class="logo" onclick="openWeb()" src="comquas.png">
-        </footer>
+    </div>
+    <div class="sponsor">
+        <span>Sponsored by</span>
+        <img src="images/comquas.png" alt="comquas">
+    </div>
 </body>
-
 </html>

@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+}
+
+.wrapper {
+    max-width: 600px;
+    width: 600px;
+
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 16px 20px;
+
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+.hidden {
+    display: none;
+}
