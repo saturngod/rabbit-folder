@@ -15,18 +15,18 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="dropper">
+        <div class="dropper" id="drop-zone">
             <img src="images/folder.png" alt="folder">
-            <span class="text-choose">Choose source folder</span>
-            <span class="text-choose hidden">Path to source folder</span>
-            <span class="text-hint">Click or drag a folder here</span>
-            <span class="text-hint">Rabbit Electron supports text files, docx, xlsx, pptx files</span>
+            <span class="text-choose" id="text-choose-folder">Choose source folder.</span>
+            <span class="text-choose hidden" id="text-source-folder-path" data-default="Path to source folder.">Path to source folder.</span>
+            <span class="text-hint">Click or drag a folder here.</span>
+            <span class="text-hint">Rabbit Electron supports text files, docx, xlsx, pptx files.</span>
         </div>
         <div class="controls">
-            <button class="btn btn-light btn-sm">Choose target folder</button>
+            <button class="btn btn-light btn-sm" id="btn-choose-target-folder" data-default="Choose target folder">Choose target folder</button>
             <div>
-                <button class="btn btn-primary btn-sm">Convert</button>
-                <span class="text-danger">error text</span>
+                <button class="btn btn-primary btn-sm disabled" disabled id="btn-convert" data-default="Convert">Convert</button>
+                <span class="text-danger hidden" id="text-error"></span>
             </div>
         </div>
     </div>
@@ -34,5 +34,8 @@
         <span>Sponsored by</span>
         <img src="images/comquas.png" alt="comquas">
     </div>
+
+    <script src="ui.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
