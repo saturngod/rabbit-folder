@@ -17,6 +17,18 @@
     margin-bottom: 16px;
 }
 
+.dropper * {
+    pointer-events: none;
+}
+
+.dropper-dragover {
+    border-color: yellowgreen;
+}
+
+.dropper-error {
+    border-color: tomato;
+}
+
 .dropper img {
     width: 64px;
     height: 64px;
@@ -43,4 +55,9 @@
     font-size: 16px;
     font-weight: 500;
     color: #4F4F4F;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 500px;
 }
