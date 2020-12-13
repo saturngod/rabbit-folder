@@ -1,7 +1,7 @@
 .sponsor {
     position: absolute;
     bottom: 12px;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,6 +11,7 @@
 }
 
 .sponsor img {
+    cursor: pointer;
     width: 100px;
 }
 
