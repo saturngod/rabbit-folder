@@ -8,6 +8,12 @@
     margin-bottom: 16px;
 }
 
+.controls .btn {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .controls div {
     display: flex;
     flex-direction: column;
