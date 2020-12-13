@@ -1,31 +1,25 @@
+const path = require('path')
+
 var sourcePath = "";
 var targetPath = "";
 
-// document.getElementById("folder1").addEventListener('drop', (event) => { 
-//     event.preventDefault(); 
-//     event.stopPropagation(); 
-  
-//     for (const f of event.dataTransfer.files) { 
-//         // Using the path attribute to get absolute file path 
-//         console.log('File Path of dragged files: ', f.path) 
-//       } 
-// }); 
-  
-// document.getElementById("folder1").addEventListener('dragover', (e) => { 
-//     e.preventDefault(); 
-//     e.stopPropagation(); 
-//   }); 
-  
-//   document.getElementById("folder1").addEventListener('dragenter', (event) => { 
-//     console.log('File is in the Drop Space'); 
-// }); 
-  
-// document.getElementById("folder1").addEventListener('dragleave', (event) => { 
-//     console.log('File has left the Drop Space'); 
-// }); 
+function setPath(path, isSource = true) {
+    isSource ? sourcePath = path : targetPath = path
+}
+
+function getPath(isSource = true) {
+    return isSource ? sourcePath : targetPath
+}
+
+let ui = new UI({
+    setPath, getPath,
+    openFolder: openFolderAll,
+    getBaseName: path.basename,
+    convert: convertNow,
+    openSponsorLink: openWeb
+})
 
 function openFolder() {
-    var sourcePath = document.getElementById("sourcePath");
     openFolderAll(sourcePath, true);
 }
 
@@ -34,31 +28,23 @@ function openTargetFolder() {
     openFolderAll(targetPath, false);
 }
 
-function openWeb(e) {
-    console.log(e);
+function openWeb() {
     const shell = require('electron').shell;
     shell.openExternal("https://www.comquas.com");
 }
 
   
-function openFolderAll(label, source) {
+async function openFolderAll() {
     const electron = require("electron").remote;
     const dialog = electron.dialog;
 
-    var k = dialog.showOpenDialog({ properties: ["openDirectory"] });
-    k.then(function(obj) {
-        if (obj["filePaths"].length > 0) {
-            var path = obj["filePaths"][0];
-            label.innerHTML = path;
-            if (source) {
-                sourcePath = path;
-            } else {
-                targetPath = path;
-            }
-        } else {
-            label.innerHTML = "";
-        }
-    });
+    let result = await dialog.showOpenDialog({ properties: ["openDirectory"] });
+
+    if (result.filePaths.length > 0) {
+        return result.filePaths[0]
+    }
+
+    return null
 }
 
 function convertDocx(source, dest,docx) {
@@ -139,14 +125,16 @@ function convertPptx(source, dest,xlsx) {
 }
 
 async function convertNow() {
-    if (sourcePath == "") {
-        alert("Please select source path");
-    } else if (targetPath == "") {
-        alert("Please select target path");
-    } else if (targetPath == sourcePath) {
-        alert("Source and Target cannot be same");
+    if (!!!sourcePath) {
+        ui.error = UI.Errors.SOURCE_EMPTY
+    } else if (!!!targetPath) {
+        ui.error = UI.Errors.TARGET_EMPTY
+    } else if (targetPath === sourcePath) {
+        ui.error = UI.Errors.SOURCE_EQ_TARGET
     }
     else {
+        ui.conversionInProgress = true
+        const { shell } = require('electron')
         const { resolve } = require("path");
         const fs = require("fs");
         const { readdir } = require("fs").promises;
@@ -210,6 +198,8 @@ async function convertNow() {
         }
 
         await getFiles(sourcePath);
-        alert('done');
+
+        shell.openPath(targetPath)
+        ui.showSuccessStatus()
     }
 }
