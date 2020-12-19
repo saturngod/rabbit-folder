@@ -6,17 +6,19 @@ const path = require('path')
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 680,
-    height: 450,
+    width: 600,
+    height: 444,
     webPreferences: {
-      nableRemoteModule: true,
+      enableRemoteModule: true,
       nodeIntegration: true
     }
   })
 
   // and load the index.html of the app.
+  mainWindow.setResizable(false)
+  mainWindow.setMaximizable(false)
   mainWindow.loadFile('index.html')
-
+  // mainWindow.webContents.openDevTools()
 }
 
 // This method will be called when Electron has finished

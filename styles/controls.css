@@ -1,0 +1,34 @@
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    margin-bottom: 16px;
+}
+
+.controls .btn {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.controls div {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+
+    flex: 1;
+    margin-left: 8px;
+}
+
+.controls div span {
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+.controls .target-choosen:hover {
+    flex: 3;
+}
